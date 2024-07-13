@@ -10,6 +10,7 @@
                 <p class="title is-4">{{ event.title }}</p>
                 <p class="subtitle is-6">{{ event.date.strftime('%Y年%m月%d日 %H:%M') }}</p>
                 <p>{{ event.location }}</p>
+                <p>{{ event.subject }}</p>
             </div>
             <footer class="card-footer">
                 <a href="{{ url_for('main.event_details', event_id=event.id) }}" class="card-footer-item">詳細を見る</a>

@@ -5,6 +5,7 @@
 <p class="subtitle">{{ event.date.strftime('%Y年%m月%d日 %H:%M') }}</p>
 <p><strong>場所:</strong> {{ event.location }}</p>
 <p><strong>主催者:</strong> {{ event.organizer.username }}</p>
+<p><strong>テーマ:</strong> {{ event.subject }}</p>
 <div class="content">
     {{ event.description }}
 </div>

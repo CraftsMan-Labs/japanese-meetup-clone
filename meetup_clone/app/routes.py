@@ -21,6 +21,7 @@ def create_event():
                       description=form.description.data,
                       date=form.date.data,
                       location=form.location.data,
+                      subject=form.subject.data,
                       organizer=current_user)
         db.session.add(event)
         db.session.commit()

@@ -7,6 +7,7 @@ class EventForm(FlaskForm):
     description = TextAreaField('Description')
     date = DateTimeField('Date and Time', format='%Y-%m-%d %H:%M', validators=[DataRequired()])
     location = StringField('Location', validators=[Length(max=100)])
+    subject = StringField('Subject', validators=[Length(max=100)])
     submit = SubmitField('Create Event')
 
 class RegisterForm(FlaskForm):

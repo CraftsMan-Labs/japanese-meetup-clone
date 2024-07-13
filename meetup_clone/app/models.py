@@ -22,6 +22,7 @@ class Event(db.Model):
     description = db.Column(db.Text)
     date = db.Column(db.DateTime, nullable=False)
     location = db.Column(db.String(100))
+    subject = db.Column(db.String(100))
     organizer_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 @login_manager.user_loader
