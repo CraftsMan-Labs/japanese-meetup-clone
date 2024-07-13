@@ -37,6 +37,7 @@ def create_event():
                       host_phone=form.host_phone.data,
                       sub_host_email=form.sub_host_email.data,
                       sub_host_phone=form.sub_host_phone.data,
+                      subject=form.subject.data,
                       organizer=current_user)
         db.session.add(event)
         db.session.commit()
