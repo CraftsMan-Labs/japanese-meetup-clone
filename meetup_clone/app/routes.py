@@ -33,6 +33,10 @@ def create_event():
                       description=form.description.data,
                       date=form.date.data,
                       location=form.location.data,
+                      host_email=form.host_email.data,
+                      host_phone=form.host_phone.data,
+                      sub_host_email=form.sub_host_email.data,
+                      sub_host_phone=form.sub_host_phone.data,
                       organizer=current_user)
         db.session.add(event)
         db.session.commit()
@@ -49,7 +53,7 @@ def event_details(event_id):
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
+        user = User(username=form.username.data, email=form.email.data, phone=form.phone.data)
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
