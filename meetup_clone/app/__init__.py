@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_jwt_extended import JWTManager
+from flask_migrate import Migrate
 from config import Config
 
 db = SQLAlchemy()
@@ -16,6 +17,7 @@ def create_app():
     login_manager.login_view = 'auth.login'
 
     jwt = JWTManager(app)
+    migrate = Migrate(app, db)
 
     from app.routes.main import main
     from app.routes.auth import auth
