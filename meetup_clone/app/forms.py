@@ -11,6 +11,7 @@ class EventForm(FlaskForm):
     host_phone = StringField('Host Phone', validators=[DataRequired(), Length(max=15)])
     sub_host_email = StringField('Sub Host Email', validators=[Email()])
     sub_host_phone = StringField('Sub Host Phone', validators=[Length(max=15)])
+    subject = StringField('Subject', validators=[Length(max=100)])  # Added subject field
     submit = SubmitField('Create Event')
 
 class RegisterForm(FlaskForm):

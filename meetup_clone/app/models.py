@@ -27,6 +27,7 @@ class Event(db.Model):
     host_phone = db.Column(db.String(15), nullable=False)
     sub_host_email = db.Column(db.String(120))
     sub_host_phone = db.Column(db.String(15))
+    subject = db.Column(db.String(100))  # Added subject field
     organizer_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 @login_manager.user_loader
