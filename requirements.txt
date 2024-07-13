@@ -6,3 +6,4 @@ flask-login
 Flask-WTF
 flask_jwt_extended
 flask-migrate
+email_validator
