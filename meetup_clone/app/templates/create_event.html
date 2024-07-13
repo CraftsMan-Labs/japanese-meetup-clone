@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">イベントを作成</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="field">
+        {{ form.title.label(class="label") }}
+        <div class="control">
+            {{ form.title(class="input") }}
+        </div>
+    </div>
+    <div class="field">
+        {{ form.description.label(class="label") }}
+        <div class="control">
+            {{ form.description(class="textarea") }}
+        </div>
+    </div>
+    <div class="field">
+        {{ form.date.label(class="label") }}
+        <div class="control">
+            {{ form.date(class="input") }}
+        </div>
+    </div>
+    <div class="field">
+        {{ form.location.label(class="label") }}
+        <div class="control">
+            {{ form.location(class="input") }}
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            {{ form.submit(class="button is-primary") }}
+        </div>
+    </div>
+</form>
+{% endblock %}
