@@ -1,0 +1,33 @@
+# Migrations Directory
+
+This directory contains migration scripts for the database schema. These scripts are generated and managed by Flask-Migrate, which is an extension that handles SQLAlchemy database migrations for Flask applications using Alembic.
+
+## Purpose
+
+The purpose of this directory is to keep track of changes to the database schema over time. Each migration script represents a set of changes to the schema, such as adding or removing columns, creating or dropping tables, etc.
+
+## Usage
+
+To create a new migration script, use the following command:
+
+```bash
+flask db migrate -m "Description of the migration"
+```
+
+To apply the migration to the database, use the following command:
+
+```bash
+flask db upgrade
+```
+
+To revert the migration, use the following command:
+
+```bash
+flask db downgrade
+```
+
+## Important Files
+
+- `env.py`: This file sets up the migration environment and configures Alembic to use the Flask app's database settings.
+- `script.py.mako`: This is the template file used by Alembic to generate new migration scripts.
+- `versions/`: This directory contains the actual migration scripts, each named with a unique identifier and a description of the migration.
