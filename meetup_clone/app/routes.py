@@ -3,13 +3,25 @@ from flask_login import login_required, current_user, login_user, logout_user
 from app.models import Event, User
 from app.forms import EventForm, RegisterForm, LoginForm
 from app import db
+from datetime import datetime
+import random
 
 main = Blueprint('main', __name__)
 auth = Blueprint('auth', __name__)
 
 @main.route('/')
 def home():
-    events = Event.query.order_by(Event.date).all()
+    location = request.args.get('location')
+    date = request.args.get('date', datetime.now().strftime('%Y-%m-%d'))
+    date = datetime.strptime(date, '%Y-%m-%d')
+
+    if location:
+        events = Event.query.filter(Event.location == location, Event.date >= date).order_by(Event.date).all()
+    else:
+        events = Event.query.filter(Event.date >= date).order_by(Event.date).all()
+        if len(events) > 10:
+            events = random.sample(events, 10)
+
     return render_template('home.html', events=events)
 
 @main.route('/create_event', methods=['GET', 'POST'])
