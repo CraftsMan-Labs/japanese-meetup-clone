@@ -5,11 +5,13 @@ from app.forms import EventForm
 from app import db
 from datetime import datetime
 import random
+from app.routes.auth import check_jwt
 
 main = Blueprint('main', __name__)
 
 @main.route('/')
 def home():
+    check_jwt()
     location = request.args.get('location')
     date = request.args.get('date', datetime.now().strftime('%Y-%m-%d'))
     date = datetime.strptime(date, '%Y-%m-%d')
