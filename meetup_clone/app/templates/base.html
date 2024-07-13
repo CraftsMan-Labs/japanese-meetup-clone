@@ -24,7 +24,7 @@
         <div class="navbar-menu">
             <div class="navbar-end">
                 <a class="navbar-item" href="{{ url_for('main.home') }}">Home</a>
-                <a class="navbar-item" href="{{ url_for('main.create_event') }}">Create Event</a>
+                <a class="navbar-item" href="{{ url_for('event.create_event') }}">Create Event</a>
                 {% if current_user.is_authenticated %}
                     <a class="navbar-item" href="{{ url_for('auth.logout') }}">Logout</a>
                 {% else %}
