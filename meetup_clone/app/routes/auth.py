@@ -3,6 +3,7 @@ from flask_login import login_required, current_user, login_user, logout_user
 from app.models import User
 from app.forms import RegisterForm, LoginForm
 from app import db
+from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identity
 
 auth = Blueprint('auth', __name__)
 
@@ -25,8 +26,9 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user and user.check_password(form.password.data):
             login_user(user)
+            access_token = create_access_token(identity=user.id)
             flash('Login successful!', 'success')
-            return redirect(url_for('main.home'))
+            return redirect(url_for('main.home', access_token=access_token))
         else:
             flash('Invalid email or password.', 'danger')
     return render_template('login.html', form=form)
@@ -37,3 +39,14 @@ def logout():
     logout_user()
     flash('You have been logged out.', 'success')
     return redirect(url_for('main.home'))
+
+@auth.route('/check_jwt')
+@jwt_required()
+def check_jwt():
+    current_user_id = get_jwt_identity()
+    if current_user_id:
+        user = User.query.get(current_user_id)
+        if user:
+            login_user(user)
+            return redirect(url_for('main.home'))
+    return redirect(url_for('auth.login'))

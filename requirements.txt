@@ -4,3 +4,4 @@ Flask-Migrate
 Flask-JWT-Extended
 flask-login
 Flask-WTF
+flask_jwt_extended
