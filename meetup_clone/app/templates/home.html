@@ -2,6 +2,27 @@
 
 {% block content %}
 <h1 class="title">イベントを探す</h1>
+
+<form method="GET" action="{{ url_for('main.home') }}">
+    <div class="field">
+        <label class="label">Location</label>
+        <div class="control">
+            <input class="input" type="text" name="location" placeholder="Enter location">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Date</label>
+        <div class="control">
+            <input class="input" type="date" name="date">
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <button class="button is-primary" type="submit">Search</button>
+        </div>
+    </div>
+</form>
+
 <div class="columns is-multiline">
     {% for event in events %}
     <div class="column is-one-third">
