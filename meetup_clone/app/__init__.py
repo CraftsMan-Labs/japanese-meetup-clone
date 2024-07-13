@@ -14,9 +14,11 @@ def create_app():
     login_manager.init_app(app)
     login_manager.login_view = 'auth.login'
 
-    from app.routes import main
+    from app.routes.main import main
     from app.routes.auth import auth
+    from app.routes.event import event
     app.register_blueprint(main)
     app.register_blueprint(auth)
+    app.register_blueprint(event)
 
     return app

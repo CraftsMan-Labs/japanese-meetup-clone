@@ -4,26 +4,10 @@ from app.models import Event
 from app.forms import EventForm
 from app import db
 from datetime import datetime
-import random
 
-main = Blueprint('main', __name__)
+event = Blueprint('event', __name__)
 
-@main.route('/')
-def home():
-    location = request.args.get('location')
-    date = request.args.get('date', datetime.now().strftime('%Y-%m-%d'))
-    date = datetime.strptime(date, '%Y-%m-%d')
-
-    if location:
-        events = Event.query.filter(Event.location == location, Event.date >= date).order_by(Event.date).all()
-    else:
-        events = Event.query.filter(Event.date >= date).order_by(Event.date).all()
-        if len(events) > 10:
-            events = random.sample(events, 10)
-
-    return render_template('home.html', events=events)
-
-@main.route('/create_event', methods=['GET', 'POST'])
+@event.route('/create_event', methods=['GET', 'POST'])
 @login_required
 def create_event():
     form = EventForm()
@@ -44,7 +28,7 @@ def create_event():
         return redirect(url_for('main.home'))
     return render_template('create_event.html', form=form)
 
-@main.route('/event/<int:event_id>')
+@event.route('/event/<int:event_id>')
 def event_details(event_id):
     event = Event.query.get_or_404(event_id)
     return render_template('event_details.html', event=event)
