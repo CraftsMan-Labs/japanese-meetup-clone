@@ -29,6 +29,30 @@
         </div>
     </div>
     <div class="field">
+        {{ form.host_email.label(class="label") }}
+        <div class="control">
+            {{ form.host_email(class="input") }}
+        </div>
+    </div>
+    <div class="field">
+        {{ form.host_phone.label(class="label") }}
+        <div class="control">
+            {{ form.host_phone(class="input") }}
+        </div>
+    </div>
+    <div class="field">
+        {{ form.sub_host_email.label(class="label") }}
+        <div class="control">
+            {{ form.sub_host_email(class="input") }}
+        </div>
+    </div>
+    <div class="field">
+        {{ form.sub_host_phone.label(class="label") }}
+        <div class="control">
+            {{ form.sub_host_phone(class="input") }}
+        </div>
+    </div>
+    <div class="field">
         <div class="control">
             {{ form.submit(class="button is-primary") }}
         </div>
